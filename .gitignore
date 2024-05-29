@@ -1,4 +1,6 @@
 data/
+compressed_array_embeddings.npz
+compressed_dataframe.csv.gz
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

@@ -1,17 +1,19 @@
 from sympy import *
-from sympy import symbols, solveset, S, Eq
+def find_f_of_100():
+    """A function $f: \mathbb N \to \mathbb N$ satisfies the following two conditions for all positive integers $n$:$f(f(f(n)))=8n-7$ and $f(2n)=2f(n)+1$. Calculate $f(100)$."""
 
-def count_solutions():
-    """Count the number of distinct solutions for the equation| | x-1 | -2 | = m/100"""
-    x, m = symbols('x m')
-    equation = Eq(abs(abs(x - 1) - 2), m/100)
-    solutions = solveset(equation, x, domain=S.Reals)
-    return len(solutions)
+    def f(n):
+        return int((8*n - 7)**(1/3))
 
-# Iterate through possible values of m from 1 to 100
-solutions_count = [count_solutions() for m in range(1, 101)]
+    f_100 = f(100)
+    f_f_100 = f(f_100)
+    f_f_f_100 = f(f_f_100)
 
-# Find the values of m for which the equation has 4 distinct solutions
-values_of_m = [m for m, count in enumerate(solutions_count, 1) if count == 4]
+    # Check if f(f(f(100))) equals 100
+    if f_f_f_100 == 100:
+        return f_f_100
+    else:
+        return "Function not found."
 
-print(values_of_m)
+result = find_f_of_100()
+print(result)
